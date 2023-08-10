@@ -10,6 +10,7 @@
 #include "modes/Ultimate.hpp"
 #include "modes/WingmanFgcMode.hpp"
 #include "modes/Smash64.hpp"
+#include "modes/Smash64Mod.hpp"
 
 extern KeyboardMode *current_kb_mode;
 
@@ -58,6 +59,8 @@ void select_mode(CommunicationBackend *backend) {
             set_mode(backend, new RivalsOfAether(socd::SOCD_2IP));
         } else if (inputs.x) {
             set_mode(backend, new Smash64(socd::SOCD_NEUTRAL));
+        } else if (inputs.y) {
+            set_mode(backend, new Smash64Mod(socd::SOCD_NEUTRAL));
         }
     } else if (inputs.mod_y && !inputs.mod_x && inputs.start) {
         if (inputs.l) {

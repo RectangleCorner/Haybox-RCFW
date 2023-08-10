@@ -26,13 +26,17 @@ void Smash64::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.a = inputs.a;
     outputs.b = inputs.b;
 
-    outputs.buttonR = inputs.l;
+    outputs.x = inputs.mod_x;
+    outputs.y = inputs.mod_y;
+
+    outputs.buttonR = inputs.l; //shield
     if (inputs.nunchuk_connected) {
         outputs.triggerLDigital = inputs.nunchuk_z;
     } else {
-        outputs.triggerLDigital = inputs.mod_y;
+        outputs.triggerLDigital = inputs.r; //taunt
     }
-    outputs.triggerRDigital = inputs.z;
+    outputs.triggerRDigital = inputs.z; //grab
+
     outputs.start = inputs.start;
 
     // Activate D-Pad layer by holding Mod X + Mod Y or Nunchuk C button.
@@ -59,21 +63,12 @@ void Smash64::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
         inputs.c_left,
         inputs.c_right,
         inputs.c_down,
-        inputs.c_up,
+        inputs.x,
         ANALOG_STICK_MIN,
         ANALOG_STICK_NEUTRAL,
         ANALOG_STICK_MAX,
         outputs
     );
-
-    if (inputs.x) {
-        outputs.rightStickY = 208;
-    }
-
-    // Rebinding Up to Mod X for more comfortable control solely with the left hand
-    if (inputs.mod_x){
-        outputs.leftStickY = 208;
-    }
 
     bool shield_button_pressed = inputs.l || inputs.r || inputs.lightshield || inputs.midshield;
     if (directions.diagonal) {
@@ -95,14 +90,6 @@ void Smash64::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
     // trajectory).
     if (_horizontal_socd && !directions.vertical) {
         outputs.leftStickX = 128 + (directions.x * 80);
-    }
-
-
-    if (outputs.triggerLDigital) {
-        outputs.triggerLAnalog = 140;
-    }
-    if (outputs.triggerRDigital) {
-        outputs.triggerRAnalog = 140;
     }
 
     // Shut off C-stick when using D-Pad layer.

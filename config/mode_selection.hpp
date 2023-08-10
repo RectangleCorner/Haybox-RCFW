@@ -56,7 +56,7 @@ void select_mode(CommunicationBackend *backend) {
             set_mode(backend, new WingmanFgcMode(socd::SOCD_NEUTRAL));
         } else if (inputs.b) {
             set_mode(backend, new RivalsOfAether(socd::SOCD_2IP));
-        } else if (inputs.y) {
+        } else if (inputs.x) {
             set_mode(backend, new Smash64(socd::SOCD_NEUTRAL));
         }
     } else if (inputs.mod_y && !inputs.mod_x && inputs.start) {

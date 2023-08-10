@@ -14,6 +14,8 @@ class Smash64 : public ControllerMode {
     void UpdateAnalogOutputs(InputState &inputs, OutputState &outputs);
 
   private:
+    bool _horizontal_socd;
+
     void HandleSocd(InputState &inputs);
 };
 

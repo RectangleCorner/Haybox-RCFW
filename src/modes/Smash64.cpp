@@ -61,9 +61,9 @@ void Smash64::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
         inputs.down,
         inputs.up,
         inputs.c_left,
-        inputs.c_right,
-        inputs.c_down,
-        inputs.x,
+        inputs.y, //y now acts as c-right
+        inputs.mod_x, //mod X now acts as c-down
+        inputs.x, // X now acts as c-up
         ANALOG_STICK_MIN,
         ANALOG_STICK_NEUTRAL,
         ANALOG_STICK_MAX,

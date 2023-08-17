@@ -41,7 +41,7 @@ void Melee20Button::UpdateDigitalOutputs(InputState &inputs, OutputState &output
         outputs.triggerLDigital = inputs.l;
     }
     outputs.triggerRDigital = inputs.r;
-    outputs.start = inputs.start;
+    outputs.start = inputs.home; //bubblebox start
 
     // Activate D-Pad layer by holding Mod X + Mod Y or Nunchuk C button. 
     // Remove inputs.w if using that as Up.
@@ -52,10 +52,7 @@ void Melee20Button::UpdateDigitalOutputs(InputState &inputs, OutputState &output
         outputs.dpadRight = inputs.c_right;
     }
 
-    if (inputs.select)
-        outputs.dpadLeft = true;
-    if (inputs.home)
-        outputs.dpadRight = true;
+   
 }
 
 void Melee20Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
@@ -260,10 +257,10 @@ void Melee20Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
         outputs.leftStickX = 128 + (directions.x * 80);
     }
 
-    if (inputs.lightshield) {
+    if (inputs.midshield) {
         outputs.triggerRAnalog = 49;
     }
-    if (inputs.midshield) {
+    if (inputs.lightshield) {
         outputs.triggerRAnalog = 94;
     }
 

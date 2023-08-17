@@ -25,10 +25,10 @@ void WingmanFgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outpu
     // Menu keys
     outputs.select = inputs.c_left;
     //function layer
-    if (inputs.mod_y){
-        outputs.home = inputs.start;
+   if (inputs.mod_y){
+        outputs.home = inputs.home;
     } else {
-        outputs.start = inputs.start;
+        outputs.start = inputs.home; //bubblebox start
     }
     outputs.leftStickClick = inputs.l;
     outputs.rightStickClick = inputs.c_up;

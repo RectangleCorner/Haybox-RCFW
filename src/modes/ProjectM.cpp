@@ -41,12 +41,12 @@ void ProjectM::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
         outputs.triggerLDigital = inputs.l;
     }
     outputs.triggerRDigital = inputs.r;
-    outputs.start = inputs.start;
+    outputs.start = inputs.home; //bubblebox start
     outputs.dpadDown = inputs.midshield;
 
     // Activate D-Pad layer by holding Mod X + Mod Y or Nunchuk C button. 
     // Remove inputs.w if using that as Up.
-    if ((inputs.mod_x && inputs.mod_y) || inputs.nunchuk_c || inputs.w) {
+    if ((inputs.mod_x && inputs.mod_y) || inputs.nunchuk_c) {
         outputs.dpadUp = inputs.c_up;
         outputs.dpadDown = inputs.c_down;
         outputs.dpadLeft = inputs.c_left;
@@ -55,12 +55,9 @@ void ProjectM::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
 
     // Don't override dpad up if it's already pressed using the MX + MY dpad
     // layer.
-    outputs.dpadUp = outputs.dpadUp || inputs.midshield;
-
-    if (inputs.select)
-        outputs.dpadLeft = true;
-    if (inputs.home)
-        outputs.dpadRight = true;
+    outputs.dpadDown = outputs.dpadDown || inputs.midshield;
+    outputs.dpadUp = inputs.w;
+    
 }
 
 void ProjectM::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
@@ -214,6 +211,10 @@ void ProjectM::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
 
     if (outputs.triggerRDigital) {
         outputs.triggerRAnalog = 140;
+    }
+
+    if (inputs.lightshield) {
+        outputs.triggerRAnalog = 49;
     }
 
     // Shut off C-stick when using D-Pad layer.

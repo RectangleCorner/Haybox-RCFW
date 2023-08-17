@@ -27,9 +27,8 @@ void Ultimate::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.buttonR = inputs.z;
     outputs.triggerLDigital = inputs.l;
     outputs.triggerRDigital = inputs.r;
-    outputs.start = inputs.start;
-    outputs.select = inputs.select;
-    outputs.home = inputs.home;
+    outputs.start = inputs.home; //bubblebox start
+
     
     outputs.dpadDown = inputs.lightshield;
     outputs.dpadUp = inputs.midshield;

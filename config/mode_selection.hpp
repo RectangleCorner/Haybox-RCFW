@@ -34,7 +34,7 @@ void set_mode(CommunicationBackend *backend, KeyboardMode *mode) {
 
 void select_mode(CommunicationBackend *backend) {
     InputState &inputs = backend->GetInputs();
-    if (inputs.mod_x && !inputs.mod_y && inputs.start) {
+    if (inputs.start && inputs.home && inputs.select) {
         if (inputs.l) {
             set_mode(
                 backend,
@@ -45,7 +45,7 @@ void select_mode(CommunicationBackend *backend) {
                 backend,
                 new ProjectM(
                     socd::SOCD_2IP_NO_REAC,
-                    { .true_z_press = false, .ledgedash_max_jump_traj = true }
+                    { .true_z_press = true, .ledgedash_max_jump_traj = true }
                 )
             );
         } else if (inputs.down) {

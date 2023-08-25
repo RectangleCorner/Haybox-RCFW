@@ -34,7 +34,7 @@ void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     } else {
         outputs.start = inputs.home; //bubblebox start
     }
-    outputs.leftStickClick = inputs.l;
+    outputs.leftStickClick = inputs.a;
     outputs.rightStickClick = inputs.c_up;
 
 

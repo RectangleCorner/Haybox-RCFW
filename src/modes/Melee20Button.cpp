@@ -33,13 +33,9 @@ void Melee20Button::UpdateDigitalOutputs(InputState &inputs, OutputState &output
     outputs.buttonR = inputs.b;
     */
     outputs.b = inputs.b;
-    outputs.x = inputs.x;
+    outputs.triggerLDigital = inputs.x;
     outputs.buttonR = inputs.z;
-    if (inputs.nunchuk_connected) {
-        outputs.triggerLDigital = inputs.nunchuk_z;
-    } else {
-        outputs.triggerLDigital = inputs.l;
-    }
+    outputs.triggerLDigital = inputs.l;
     outputs.triggerRDigital = inputs.r;
     outputs.start = inputs.home; //bubblebox start
 
@@ -275,11 +271,5 @@ void Melee20Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
     if ((inputs.mod_x && inputs.mod_y) || inputs.nunchuk_c) {
         outputs.rightStickX = 128;
         outputs.rightStickY = 128;
-    }
-
-    // Nunchuk overrides left stick.
-    if (inputs.nunchuk_connected) {
-        outputs.leftStickX = inputs.nunchuk_x;
-        outputs.leftStickY = inputs.nunchuk_y;
     }
 }

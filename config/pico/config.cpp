@@ -47,7 +47,6 @@ GpioButtonMapping button_mappings[] = {
     { &InputState::c_down,      15},
     { &InputState::a,           14},
     { &InputState::c_right,     16},
-
     { &InputState::b,           26},
     { &InputState::x,           21},
     { &InputState::z,           19},
@@ -120,8 +119,8 @@ void setup() {
                 primary_backend, new B0XXInputViewer(input_sources, input_source_count)
             };
             primary_backend->SetGameMode(
-                new Melee20Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = true })
-                //new FgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL)
+                //new Melee20Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = true })
+                new FgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL)
             );
         }
     } else {

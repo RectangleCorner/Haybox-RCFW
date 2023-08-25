@@ -41,7 +41,7 @@ GpioButtonMapping button_mappings[] = {
     { &InputState::select,      10},
     { &InputState::start,       0 },
     { &InputState::home,        11},
-
+    { &InputState::nunchuk_c,   8 }, // Dpad Toggle button
     { &InputState::c_left,      13},
     { &InputState::c_up,        12},
     { &InputState::c_down,      15},

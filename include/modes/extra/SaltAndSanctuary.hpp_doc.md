@@ -1,0 +1,1 @@
+The file "SaltAndSanctuary.hpp" seems to define a class called "SaltAndSanctuary" which inherits from "ControllerMode". It also includes several header files such as "ControllerMode.hpp", "socd.hpp", and "state.hpp". The class appears to have two private member functions: "UpdateDigitalOutputs" and "UpdateAnalogOutputs".

@@ -1,0 +1,1 @@
+Based on the provided code, it appears to be a C++ header file defining a class called MultiVersus that inherits from a base class called ControllerMode. The class seems to be related to controlling some kind of input and output states. It includes other header files for "core/ControllerMode.hpp", "core/socd.hpp", and "core/state.hpp".

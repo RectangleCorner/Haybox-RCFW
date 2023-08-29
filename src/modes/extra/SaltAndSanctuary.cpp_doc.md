@@ -1,0 +1,1 @@
+Based on the code snippet provided, it seems that the file `SaltAndSanctuary.hpp` contains the implementation of the `SaltAndSanctuary` class.

@@ -1,0 +1,1 @@
+Based on the file name "TUGamepad.hpp" and the content of the file, it appears to be a header file for a gamepad class in an Arduino library. The file defines a class called "TUGamepad" which provides methods for interacting with a gamepad device, such as initializing the device, sending button state, and setting analog stick values.

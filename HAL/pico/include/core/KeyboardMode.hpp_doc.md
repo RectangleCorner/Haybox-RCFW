@@ -1,0 +1,3 @@
+Based on the file name and its inclusion of other files, this file seems to be defining a KeyboardMode class that inherits from InputMode. It likely has functions to handle sending reports of input states and updating keys. It also includes other files such as "core/InputMode.hpp", "core/socd.hpp", "core/state.hpp", and "TUKeyboard.hpp".
+
+Based on this information, the file "core/InputMode.hpp" may define the InputMode class being inherited from. The file "core/socd.hpp" may contain definitions related to the SOCD (Simultaneous Opposing Cardinal Direction) attitude control. The file "core/state.hpp" may contain definitions related to the state of the program or system. Finally, "TUKeyboard.hpp" likely contains definitions and functions related to keyboard inputs.

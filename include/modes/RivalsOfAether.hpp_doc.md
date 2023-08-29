@@ -1,0 +1,1 @@
+Given the information provided, it is likely that this file, "modes/RivalsOfAether.hpp", contains the implementation of the RivalsOfAether class which inherits from the ControllerMode class. The class seems to be related to game modes in the Rivals of Aether game. It includes other files such as "core/ControllerMode.hpp", "core/socd.hpp", and "core/state.hpp".

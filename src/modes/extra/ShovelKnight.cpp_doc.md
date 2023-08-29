@@ -1,0 +1,3 @@
+Based on the code snippet provided, it appears that the file "ShovelKnight.hpp" contains the definition of the class "ShovelKnight". This class seems to handle the mapping of input and output states for a game character named Shovel Knight.
+
+The file may also include other files such as "modes/extra/ShovelKnight.hpp" or "modes/extra/socd.hpp" based on the usage of the namespaces "socd::SocdType", "socd::SocdPair", "InputState", and "OutputState".

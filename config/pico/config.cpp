@@ -119,8 +119,8 @@ void setup() {
                 primary_backend, new B0XXInputViewer(input_sources, input_source_count)
             };
             primary_backend->SetGameMode(
-                //new Melee20Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = true })
-                new FgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL)
+                new Melee20Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = true })
+                //new FgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL)
             );
         }
     } else {

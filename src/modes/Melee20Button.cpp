@@ -33,9 +33,9 @@ void Melee20Button::UpdateDigitalOutputs(InputState &inputs, OutputState &output
     outputs.buttonR = inputs.b;
     */
     outputs.b = inputs.b;
-    outputs.triggerLDigital = inputs.x;
-    outputs.buttonR = inputs.z;
     outputs.triggerLDigital = inputs.l;
+    outputs.buttonR = inputs.z;
+    outputs.triggerLDigital = inputs.x;
     outputs.triggerRDigital = inputs.r;
     outputs.start = inputs.home; //bubblebox start
 

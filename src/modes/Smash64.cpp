@@ -29,7 +29,7 @@ void Smash64::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     }
     outputs.triggerRDigital = inputs.z; //grab
 
-    outputs.start = inputs.home; //bubblebox start
+    outputs.start = inputs.start;
 
      // Activate D-Pad layer by holding Mod X + Mod Y or Nunchuk C button. 
     // Remove inputs.w if using that as Up.

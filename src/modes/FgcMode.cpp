@@ -30,9 +30,9 @@ void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.select = inputs.c_left;
     //function layer
     if (inputs.mod_y){
-        outputs.home = inputs.home;
+        outputs.home = inputs.start;
     } else {
-        outputs.start = inputs.home; //bubblebox start
+        outputs.start = inputs.start; //bubblebox start
     }
     outputs.leftStickClick = inputs.a;
     outputs.rightStickClick = inputs.c_up;

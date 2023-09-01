@@ -41,7 +41,7 @@ void ProjectM::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
         outputs.triggerLDigital = inputs.l;
     }
     outputs.triggerRDigital = inputs.r;
-    outputs.start = inputs.home; //bubblebox start
+    outputs.start = inputs.start; //bubblebox start
     outputs.dpadDown = inputs.midshield;
 
     // Activate D-Pad layer by holding Mod X + Mod Y or Nunchuk C button. 

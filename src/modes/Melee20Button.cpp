@@ -37,7 +37,7 @@ void Melee20Button::UpdateDigitalOutputs(InputState &inputs, OutputState &output
     outputs.buttonR = inputs.z;
     outputs.triggerLDigital = inputs.x;
     outputs.triggerRDigital = inputs.r;
-    outputs.start = inputs.home; //bubblebox start
+    outputs.start = inputs.start; 
 
     // Activate D-Pad layer by holding Mod X + Mod Y or Nunchuk C button. 
     // Remove inputs.w if using that as Up.

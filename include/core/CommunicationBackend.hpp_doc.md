@@ -1,0 +1,3 @@
+Based on the code provided, it appears that this file is a header file for a class called "CommunicationBackend". It includes other header files such as "ControllerMode.hpp", "InputSource.hpp", and "state.hpp". 
+
+The class "CommunicationBackend" has several public member functions, including a constructor, destructor, and various other functions such as "GetInputs", "ScanInputs", "ScanInputs" with a parameter, "UpdateOutputs", "SetGameMode", and "SendReport". It also has some protected member variables and a private member function.

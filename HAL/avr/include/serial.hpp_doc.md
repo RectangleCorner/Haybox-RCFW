@@ -1,0 +1,1 @@
+This file appears to be a header file for serial communication. It contains function prototypes for initializing and closing the serial connection, printing strings, writing bytes and checking the availability of space for writing to the serial port.

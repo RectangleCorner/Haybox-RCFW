@@ -1,0 +1,1 @@
+This file appears to be a header file for a standard library in a hardware abstraction layer (HAL). It includes two other files: "Arduino.h" and "pico/stdlib.h".

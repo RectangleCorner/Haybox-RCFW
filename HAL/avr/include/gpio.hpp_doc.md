@@ -1,0 +1,1 @@
+This file is likely a header file (ends with `.hpp`) for a GPIO (General Purpose Input/Output) module. It defines a namespace `gpio` with functions for initializing a pin, reading a digital value from a pin, and writing a digital value to a pin. It also includes an enum `GpioMode` to specify the mode of a pin (output, input, input with pull-up, input with pull-down).

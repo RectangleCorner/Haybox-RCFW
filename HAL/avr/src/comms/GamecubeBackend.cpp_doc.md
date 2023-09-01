@@ -1,0 +1,1 @@
+Based on the provided code, it seems like the file "GamecubeBackend.hpp" contains the class definition for the GamecubeBackend class. The file "Nintendo.h" likely contains the necessary headers for working with Nintendo-specific functionalities.

@@ -1,0 +1,1 @@
+Based on the content of this file, it appears to define HID keycodes used for keyboard inputs.

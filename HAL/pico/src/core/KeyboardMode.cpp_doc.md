@@ -1,0 +1,1 @@
+Based on the code snippet provided, it seems like the file "core/KeyboardMode.hpp" may contain the declaration and definition of the `KeyboardMode` class. It includes the headers "core/InputMode.hpp" and "TUKeyboard.hpp". The functions defined in the code snippet are `KeyboardMode` constructor, `~KeyboardMode` destructor, `SendReport`, and `Press`.

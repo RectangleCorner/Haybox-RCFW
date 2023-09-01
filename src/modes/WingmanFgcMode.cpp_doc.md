@@ -1,0 +1,1 @@
+Based on the code snippet provided, it seems like the file "WingmanFgcMode.hpp" contains the implementation of the class `WingmanFgcMode`.

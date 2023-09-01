@@ -1,0 +1,1 @@
+Based on the summary, the file "modes_smash64.hpp" is likely to contain the class definition for "Smash64". It seems to inherit from "ControllerMode" and may include other files such as "core/ControllerMode.hpp", "core/socd.hpp", and "core/state.hpp". The class may have functions like "UpdateDigitalOutputs" and "UpdateAnalogOutputs".

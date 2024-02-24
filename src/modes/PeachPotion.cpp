@@ -1,13 +1,13 @@
-#include "modes/Melee20Button.hpp"
+#include "modes/PeachPotion.hpp"
 
 #define ANALOG_STICK_MIN 48
 #define ANALOG_STICK_NEUTRAL 128
 #define ANALOG_STICK_MAX 208
 
-Melee20Button::Melee20Button(
+PeachPotion::PeachPotion(
     socd::SocdType horizontal_socd,
     socd::SocdType vertical_socd,
-    Melee20ButtonOptions options
+    PeachPotionOptions options
 ) {
     _socd_pair_count = 4;
     _socd_pairs = new socd::SocdPair[_socd_pair_count]{
@@ -20,25 +20,21 @@ Melee20Button::Melee20Button(
     };
 
     _options = options;
-    _horizontal_socd = false;
+    _horizontal_socd = true;
 }
 
-void Melee20Button::HandleSocd(InputState &inputs) {
+void PeachPotion::HandleSocd(InputState &inputs) {
     _horizontal_socd = inputs.left && inputs.right;
     InputMode::HandleSocd(inputs);
 }
 
-void Melee20Button::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
+void PeachPotion::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.y = inputs.y;
     outputs.a = inputs.a;
-    /* peach layout. uncomment line 64 to make outputs.up = inputs.z and comment out line 65
-    outputs.b = inputs.x;
-    outputs.x = inputs.up;
-    outputs.buttonR = inputs.b;
-    */
-    outputs.b = inputs.b;
-    outputs.x = inputs.x;
-    outputs.buttonR = inputs.z;
+    // peach layout. uncomment line 64 to make outputs.up = inputs.z and comment out line 65
+    outputs.x = inputs.b;
+    outputs.b = inputs.z;
+    outputs.buttonR = inputs.up;
     if (inputs.nunchuk_connected) {
         outputs.triggerLDigital = inputs.nunchuk_z;
     } else {
@@ -56,13 +52,13 @@ void Melee20Button::UpdateDigitalOutputs(InputState &inputs, OutputState &output
     }
 }
 
-void Melee20Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
+void PeachPotion::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
     UpdateDirections(
         inputs.left,
         inputs.right,
         inputs.down,
-        // inputs.z, //peach layout up
-        inputs.up, // replace with inputs.w if using WASD
+        inputs.x, // peach layout up
+        // inputs.up, // replace with inputs.w if using WASD
         inputs.c_left,
         inputs.c_right,
         inputs.c_down,
@@ -136,7 +132,7 @@ void Melee20Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
             }
 
             /* Extended Up B Angles */
-            if (inputs.b) {
+            if (inputs.x) {
                 // 22.9638 - 9125 3875 (23.0) = 73 31
                 outputs.leftStickX = 128 + (directions.x * 73);
                 outputs.leftStickY = 128 + (directions.y * 31);
@@ -198,7 +194,7 @@ void Melee20Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
         }
 
         // Turnaround neutral B nerf
-        if (inputs.b) {
+        if (inputs.x) {
             outputs.leftStickX = 128 + (directions.x * 80);
         }
 
@@ -229,7 +225,7 @@ void Melee20Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
             }
 
             /* Extended Up B Angles */
-            if (inputs.b) {
+            if (inputs.x) {
                 // 67.0362 - 3875 9125 = 31 73
                 outputs.leftStickX = 128 + (directions.x * 31);
                 outputs.leftStickY = 128 + (directions.y * 73);

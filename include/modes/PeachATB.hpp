@@ -1,5 +1,5 @@
-#ifndef _MODES_MELEE20BUTTON_HPP
-#define _MODES_MELEE20BUTTON_HPP
+#ifndef _MODES_PEACHATB_HPP
+#define _MODES_PEACHATB_HPP
 
 #include "core/ControllerMode.hpp"
 #include "core/socd.hpp"
@@ -7,14 +7,14 @@
 
 typedef struct {
     bool crouch_walk_os = false;
-} Melee20ButtonOptions;
+} PeachATBOptions;
 
-class Melee20Button : public ControllerMode {
+class PeachATB : public ControllerMode {
   public:
-    Melee20Button(
+    PeachATB(
         socd::SocdType horizontal_socd,
         socd::SocdType vertical_socd,
-        Melee20ButtonOptions options = {}
+        PeachATBOptions options = {}
     );
 
   protected:
@@ -22,7 +22,7 @@ class Melee20Button : public ControllerMode {
     void UpdateAnalogOutputs(InputState &inputs, OutputState &outputs);
 
   private:
-    Melee20ButtonOptions _options;
+    PeachATBOptions _options;
     bool _horizontal_socd;
 
     void HandleSocd(InputState &inputs);

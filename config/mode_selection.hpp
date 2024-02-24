@@ -5,11 +5,13 @@
 #include "modes/DefaultKeyboardMode.hpp"
 #include "modes/FgcMode.hpp"
 #include "modes/Melee20Button.hpp"
+#include "modes/PeachATB.hpp"
+#include "modes/PeachPotion.hpp"
 #include "modes/ProjectM.hpp"
 #include "modes/RivalsOfAether.hpp"
+#include "modes/Smash64.hpp"
 #include "modes/Ultimate.hpp"
 #include "modes/WingmanFgcMode.hpp"
-#include "modes/Smash64.hpp"
 
 extern KeyboardMode *current_kb_mode;
 
@@ -38,7 +40,25 @@ void select_mode(CommunicationBackend *backend) {
         if (inputs.l) {
             set_mode(
                 backend,
-                new Melee20Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = true })
+                new Melee20Button(
+                    socd::SOCD_NEUTRAL,
+                    socd::SOCD_2IP_NO_REAC,
+                    { .crouch_walk_os = true }
+                )
+            );
+        } else if (inputs.r) {
+            set_mode(
+                backend,
+                new PeachATB(socd::SOCD_NEUTRAL, socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = true })
+            );
+        } else if (inputs.y) {
+            set_mode(
+                backend,
+                new PeachPotion(
+                    socd::SOCD_NEUTRAL,
+                    socd::SOCD_2IP_NO_REAC,
+                    { .crouch_walk_os = true }
+                )
             );
         } else if (inputs.left) {
             set_mode(
@@ -54,9 +74,9 @@ void select_mode(CommunicationBackend *backend) {
             set_mode(backend, new FgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL));
         } else if (inputs.b) {
             set_mode(backend, new RivalsOfAether(socd::SOCD_2IP));
-        } else if (inputs.x){
+        } else if (inputs.x) {
             set_mode(backend, new Smash64(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL));
-        } 
+        }
         /* else if (inputs.y){
             set_mode(backend, new Smash64Mod(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL));
         } */

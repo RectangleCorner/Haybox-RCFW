@@ -15,9 +15,8 @@
 #include "input/NunchukInput.hpp"
 #include "joybus_utils.hpp"
 #include "modes/Melee20Button.hpp"
-#include "stdlib.hpp"
 #include "modes/WingmanFgcMode.hpp"
-
+#include "stdlib.hpp"
 
 #include <pico/bootrom.h>
 
@@ -55,15 +54,15 @@ GpioButtonMapping button_mappings[] = {
 size_t button_count = sizeof(button_mappings) / sizeof(GpioButtonMapping);
 
 const Pinout pinout = {
-    .joybus_data = 2,   
+    .joybus_data = 2,
     //.mux = 0,
-    .mux = 1,
-     //   .mux = 3,
-     //   .mux = 4,
-     //   .mux = 5,
-     //  .mux = 23,
-     //  .mux = 24,
-      // .mux = 25,
+    //.mux = 1,
+    //   .mux = 3,
+    //   .mux = 4,
+    //   .mux = 5,
+    //  .mux = 23,
+    //  .mux = 24,
+    // .mux = 25,
     //.mux = 29,
 
     .nunchuk_detect = -1,
@@ -92,16 +91,6 @@ void setup() {
     gpio_init(1);
     gpio_set_dir(1, GPIO_OUT);
 
-    // Hold B on plugin for Brook board mode.
-    //please work
-    
-
-    pinMode(pinout.mux, OUTPUT);
-    if (button_holds.b)
-        digitalWrite(pinout.mux, HIGH);
-    else
-        digitalWrite(pinout.mux, LOW);
-
     // Create array of input sources to be used.
     static InputSource *input_sources[] = { gpio_input };
     size_t input_source_count = sizeof(input_sources) / sizeof(InputSource *);
@@ -119,7 +108,8 @@ void setup() {
             backends = new CommunicationBackend *[backend_count] { primary_backend };
 
             // Default to FGC mode on Switch.
-            primary_backend->SetGameMode(new WingmanFgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL));
+            primary_backend->SetGameMode(new WingmanFgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL)
+            );
             return;
         } else if (button_holds.z) {
             // If no console detected and Z is held on plugin then use DInput backend.
@@ -137,41 +127,54 @@ void setup() {
             backends = new CommunicationBackend *[backend_count] {
                 primary_backend, new B0XXInputViewer(input_sources, input_source_count)
             };
+            primary_backend->SetGameMode(
+                new Melee20Button(
+                    socd::SOCD_NEUTRAL,
+                    socd::SOCD_2IP_NO_REAC,
+                    { .crouch_walk_os = true }
+                )
+                // new FgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL)
+                /*
+                new ProjectM(
+                    socd::SOCD_2IP_NO_REAC,
+                    { .true_z_press = false, .ledgedash_max_jump_traj = true }
+                )
+                */
+            );
         }
     } else {
         if (console == ConnectedConsole::GAMECUBE) {
             primary_backend =
                 new GamecubeBackend(input_sources, input_source_count, pinout.joybus_data);
+            primary_backend->SetGameMode(
+                new Melee20Button(
+                    socd::SOCD_NEUTRAL,
+                    socd::SOCD_2IP_NO_REAC,
+                    { .crouch_walk_os = true }
+                )
+                // new Ultimate(socd::SOCD_2IP)
+                /*
+                new ProjectM(
+                    socd::SOCD_2IP_NO_REAC,
+                    { .true_z_press = false, .ledgedash_max_jump_traj = true }
+                )
+                */
+            );
         } else if (console == ConnectedConsole::N64) {
             primary_backend = new N64Backend(input_sources, input_source_count, pinout.joybus_data);
+            primary_backend->SetGameMode(new Smash64(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL));
         }
 
         // If console then only using 1 backend (no input viewer).
         backend_count = 1;
         backends = new CommunicationBackend *[backend_count] { primary_backend };
     }
-    /*
-    bool use_teleport = false;
-    if (button_holds.b) {
-        use_teleport = true;
-    }
-    */
-
-    bool use_crouchwalk = false;
-    if (button_holds.down) {
-        use_crouchwalk = true;
-    }
-
-    // Default to Melee mode.
-    primary_backend->SetGameMode(
-        new Melee20Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = use_crouchwalk })
-    );
 }
 
 void loop() {
-    //pinMode(0, OUTPUT);
-    digitalWrite(0, HIGH); //power the brook board
-   
+    // pinMode(0, OUTPUT);
+    // digitalWrite(0, HIGH); //power the brook board
+
     select_mode(backends[0]);
 
     for (size_t i = 0; i < backend_count; i++) {

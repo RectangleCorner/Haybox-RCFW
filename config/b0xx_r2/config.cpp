@@ -89,15 +89,15 @@ void setup() {
             primary_backend, new B0XXInputViewer(input_sources, input_source_count)
         };
         primary_backend->SetGameMode(
-                //new Melee20Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = false })
-                new FgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL)
-                /*
-                new ProjectM(
-                    socd::SOCD_2IP_NO_REAC,
-                    { .true_z_press = false, .ledgedash_max_jump_traj = true }
-                )
-                */
-            );
+            // new Melee20Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = false })
+            new FgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL)
+            /*
+            new ProjectM(
+                socd::SOCD_2IP_NO_REAC,
+                { .true_z_press = false, .ledgedash_max_jump_traj = true }
+            )
+            */
+        );
     } else {
         delete primary_backend;
         if (button_holds.c_left) {
@@ -108,30 +108,34 @@ void setup() {
             // Hold A on plugin for GameCube adapter.
             primary_backend =
                 new GamecubeBackend(input_sources, input_source_count, 0, pinout.joybus_data);
-                primary_backend->SetGameMode(
-                    //new Melee20Button(socd::SOCD_NEUTRAL, { .crouch_walk_os = false })
-                    new Ultimate(socd::SOCD_2IP)
-                    /*
-                    new ProjectM(
-                        socd::SOCD_2IP_NO_REAC,
-                        { .true_z_press = false, .ledgedash_max_jump_traj = true }
-                    )
-                    */
-                );
+            primary_backend->SetGameMode(
+                // new Melee20Button(socd::SOCD_NEUTRAL, { .crouch_walk_os = false })
+                new Ultimate(socd::SOCD_2IP)
+                /*
+                new ProjectM(
+                    socd::SOCD_2IP_NO_REAC,
+                    { .true_z_press = false, .ledgedash_max_jump_traj = true }
+                )
+                */
+            );
         } else {
             // Default to GameCube/Wii.
             primary_backend =
                 new GamecubeBackend(input_sources, input_source_count, 125, pinout.joybus_data);
-                primary_backend->SetGameMode(
-                    //new Melee20Button(socd::SOCD_NEUTRAL, { .crouch_walk_os = false })
-                    new Ultimate(socd::SOCD_2IP)
-                    /*
-                    new ProjectM(
-                        socd::SOCD_2IP_NO_REAC,
-                        { .true_z_press = false, .ledgedash_max_jump_traj = true }
-                    )
-                    */
-                );
+            primary_backend->SetGameMode(
+                new Melee20Button(
+                    socd::SOCD_NEUTRAL,
+                    socd::SOCD_2IP_NO_REAC,
+                    { .crouch_walk_os = true }
+                )
+                // new Ultimate(socd::SOCD_2IP)
+                /*
+                new ProjectM(
+                    socd::SOCD_2IP_NO_REAC,
+                    { .true_z_press = false, .ledgedash_max_jump_traj = true }
+                )
+                */
+            );
         }
 
         // If not DInput then only using 1 backend (no input viewer).

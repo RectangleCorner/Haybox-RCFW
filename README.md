@@ -1,4 +1,4 @@
-# HayBox FGC Edition
+# HayBox Rectangoe Corner Firmware Edition
 
 This is a modified version of HayBox, designed for [B0XX](https://b0xx.com)-style controllers. It includes a Brook Wingman compatible mode and CPT compliant SOCD in the FGC modes. This readme will cover the main differences and FAQs for our users. For more information about HayBox, please visit [the HayBox repo.](https://github.com/JonnyHaystack/HayBox)
 

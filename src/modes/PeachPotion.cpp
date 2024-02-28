@@ -12,7 +12,7 @@ PeachPotion::PeachPotion(
     _socd_pair_count = 4;
     _socd_pairs = new socd::SocdPair[_socd_pair_count]{
         socd::SocdPair{&InputState::left,    &InputState::right,   horizontal_socd},
-        socd::SocdPair{ &InputState::down,   &InputState::up,      vertical_socd  },
+        socd::SocdPair{ &InputState::down,   &InputState::x,       vertical_socd  },
  //   If using WASD, uncomment the below line and comment the above line
   //   socd::SocdPair{ &InputState::down,   &InputState::w     },
         socd::SocdPair{ &InputState::c_left, &InputState::c_right, vertical_socd  },

@@ -61,8 +61,8 @@ void PeachPotion::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) 
         // inputs.up, // replace with inputs.w if using WASD
         inputs.c_left,
         inputs.c_right,
-        inputs.c_down,
         inputs.c_up,
+        inputs.c_down,
         ANALOG_STICK_MIN,
         ANALOG_STICK_NEUTRAL,
         ANALOG_STICK_MAX,

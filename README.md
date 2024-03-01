@@ -22,7 +22,7 @@ Major changes from HayBox:
 - [Smash 64](#smash-64)
     - [Emulator Setup](#emulator-setup)
 - [Customisation](#customisation)
-    - [Flashing New Firmware](#flashing-new-firmware)
+    - [Updating Your Controller](#Updating-Your-Controller)
     - [Layouts](#layouts)
         - [ATB Peach Layout](#atb-peach-layout)
         - [WASD](#wasd)

@@ -12,10 +12,10 @@ class GamecubeBackend : public CommunicationBackend {
         InputSource **input_sources,
         size_t input_source_count,
         uint data_pin,
-        PIO pio = pio0,
-
         uint rumble,
         uint rumbleBrake,
+        PIO pio = pio0,
+
         int sm = -1,
         int offset = -1
     );

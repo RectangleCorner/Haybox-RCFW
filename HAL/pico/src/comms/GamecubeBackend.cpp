@@ -12,9 +12,9 @@ GamecubeBackend::GamecubeBackend(
     InputSource **input_sources,
     size_t input_source_count,
     uint data_pin,
-    PIO pio,
     uint rumble,
     uint rumbleBrake,
+    PIO pio,
     int sm,
     int offset
 )

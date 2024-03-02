@@ -13,6 +13,9 @@ class GamecubeBackend : public CommunicationBackend {
         size_t input_source_count,
         uint data_pin,
         PIO pio = pio0,
+
+        uint rumble,
+        uint rumbleBrake,
         int sm = -1,
         int offset = -1
     );
@@ -23,6 +26,8 @@ class GamecubeBackend : public CommunicationBackend {
   private:
     GamecubeConsole *_gamecube;
     gc_report_t _report;
+    uint rumble_pin;
+    uint rumbleBrake_pin;
 };
 
 #endif

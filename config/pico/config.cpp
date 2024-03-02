@@ -11,6 +11,11 @@
 #include "core/pinout.hpp"
 #include "core/socd.hpp"
 #include "core/state.hpp"
+#include "hardware/adc.h"
+#include "hardware/gpio.h"
+#include "hardware/pwm.h"
+#include "hardware/spi.h"
+#include "hardware/timer.h"
 #include "input/GpioButtonInput.hpp"
 #include "input/NunchukInput.hpp"
 #include "joybus_utils.hpp"
@@ -58,13 +63,13 @@ GpioButtonMapping button_mappings[] = {
 };
 size_t button_count = sizeof(button_mappings) / sizeof(GpioButtonMapping);
 
-const Pinout pinout = {
-    .joybus_data = 28,
-    .mux = -1,
-    .nunchuk_detect = -1,
-    .nunchuk_sda = -1,
-    .nunchuk_scl = -1,
-};
+const Pinout pinout = { .joybus_data = 28,
+                        .mux = -1,
+                        .nunchuk_detect = -1,
+                        .nunchuk_sda = -1,
+                        .nunchuk_scl = -1,
+                        .rumble = 23,
+                        .rumbleBrake = 29 };
 
 void setup() {
     // Create GPIO input source and use it to read button states for checking button holds.
@@ -82,6 +87,21 @@ void setup() {
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
+
+    gpio_init(pinout.rumble);
+    gpio_init(pinout.rumbleBrake);
+    gpio_set_dir(pinout.rumble, GPIO_OUT);
+    gpio_set_dir(pinout.rumbleBrake, GPIO_OUT);
+    gpio_set_function(pinout.rumble, GPIO_FUNC_PWM);
+    gpio_set_function(pinout.rumbleBrake, GPIO_FUNC_PWM);
+    const uint rumbleSlice_num = pwm_gpio_to_slice_num(pinout.rumble);
+    const uint brakeSlice_num = pwm_gpio_to_slice_num(pinout.rumbleBrake);
+    pwm_set_wrap(rumbleSlice_num, 255);
+    pwm_set_wrap(brakeSlice_num, 255);
+    pwm_set_chan_level(rumbleSlice_num, PWM_CHAN_B, 0); // B for odd pins
+    pwm_set_chan_level(brakeSlice_num, PWM_CHAN_B, 255); // B for odd pins
+    pwm_set_enabled(rumbleSlice_num, true);
+    pwm_set_enabled(brakeSlice_num, true);
 
     // Create array of input sources to be used.
     static InputSource *input_sources[] = { gpio_input };
@@ -135,8 +155,13 @@ void setup() {
         }
     } else {
         if (console == ConnectedConsole::GAMECUBE) {
-            primary_backend =
-                new GamecubeBackend(input_sources, input_source_count, pinout.joybus_data);
+            primary_backend = new GamecubeBackend(
+                input_sources,
+                input_source_count,
+                pinout.joybus_data,
+                pinout.rumble,
+                pinout.rumbleBrake
+            );
             primary_backend->SetGameMode(
                 new Melee20Button(
                     socd::SOCD_NEUTRAL,

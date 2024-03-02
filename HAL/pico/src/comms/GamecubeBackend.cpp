@@ -1,6 +1,8 @@
 #include "comms/GamecubeBackend.hpp"
 
 #include "core/InputSource.hpp"
+#include "hardware/gpio.h"
+#include "hardware/pwm.h"
 
 #include <GamecubeConsole.hpp>
 #include <hardware/pio.h>
@@ -11,12 +13,16 @@ GamecubeBackend::GamecubeBackend(
     size_t input_source_count,
     uint data_pin,
     PIO pio,
+    uint rumble,
+    uint rumbleBrake,
     int sm,
     int offset
 )
     : CommunicationBackend(input_sources, input_source_count) {
     _gamecube = new GamecubeConsole(data_pin, pio, sm, offset);
     _report = default_gc_report;
+    rumble_pin = rumble;
+    rumbleBrake_pin = rumbleBrake;
 }
 
 GamecubeBackend::~GamecubeBackend() {
@@ -65,6 +71,18 @@ void GamecubeBackend::SendReport() {
     // Send outputs to console unless poll command is invalid.
     if (_gamecube->WaitForPollEnd() != PollStatus::ERROR) {
         _gamecube->SendReport(&_report);
+    }
+
+    PollStatus rumble_status = _gamecube->WaitForPollEnd();
+    if (rumble_status != PollStatus::ERROR) {
+        _gamecube->SendReport(&_report);
+
+        if (rumble_status == PollStatus::RUMBLE_ON) {
+            pwm_set_gpio_level(rumbleBrake_pin, 0);
+            pwm_set_gpio_level(rumble_pin, 152);
+        } else { // PollStatus::RUMBLE_OFF
+            gpio_put(rumble_pin, 0);
+        }
     }
 }
 

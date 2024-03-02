@@ -46,7 +46,8 @@ void select_mode(CommunicationBackend *backend) {
                     { .crouch_walk_os = true }
                 )
             );
-        } else if (inputs.r) {
+
+        } /* else if (inputs.r) {
             set_mode(
                 backend,
                 new PeachATB(socd::SOCD_NEUTRAL, socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = true })
@@ -60,7 +61,8 @@ void select_mode(CommunicationBackend *backend) {
                     { .crouch_walk_os = true }
                 )
             );
-        } else if (inputs.left) {
+        }  */
+        else if (inputs.left) {
             set_mode(
                 backend,
                 new ProjectM(

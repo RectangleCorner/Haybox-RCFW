@@ -14,14 +14,13 @@
 #include "input/GpioButtonInput.hpp"
 #include "input/NunchukInput.hpp"
 #include "joybus_utils.hpp"
+#include "modes/FgcMode.hpp"
 #include "modes/Melee20Button.hpp"
 #include "modes/ProjectM.hpp"
 #include "modes/Smash64.hpp"
-#include "modes/WingmanFgcMode.hpp"
 #include "modes/Ultimate.hpp"
-#include "modes/FgcMode.hpp"
+#include "modes/WingmanFgcMode.hpp"
 #include "stdlib.hpp"
-
 
 #include <pico/bootrom.h>
 
@@ -36,11 +35,11 @@ GpioButtonMapping button_mappings[] = {
     { &InputState::right,       2 },
     { &InputState::mod_x,       6 },
     { &InputState::mod_y,       7 },
-    { &InputState::nunchuk_c,         8 },
+    { &InputState::nunchuk_c,   8 },
     { &InputState::select,      10},
     { &InputState::start,       0 },
     { &InputState::home,        11},
-        { &InputState::w,         1 },
+    { &InputState::w,           1 },
     { &InputState::c_left,      13},
     { &InputState::c_up,        12},
     { &InputState::c_down,      15},
@@ -100,7 +99,8 @@ void setup() {
             primary_backend = new NintendoSwitchBackend(input_sources, input_source_count);
             backends = new CommunicationBackend *[backend_count] { primary_backend };
             // Default to Wingman FGC mode upon plugin to Brook Wingman.
-            primary_backend->SetGameMode(new WingmanFgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL));
+            primary_backend->SetGameMode(new WingmanFgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL)
+            );
             return;
         } else if (button_holds.z) {
             // If no console detected and Z is held on plugin then use DInput backend.
@@ -119,7 +119,7 @@ void setup() {
                 primary_backend, new B0XXInputViewer(input_sources, input_source_count)
             };
             primary_backend->SetGameMode(
-                //new Melee20Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = false })
+                // new Melee20Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = false })
                 new FgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL)
                 /*
                 new ProjectM(
@@ -133,27 +133,25 @@ void setup() {
         if (console == ConnectedConsole::GAMECUBE) {
             primary_backend =
                 new GamecubeBackend(input_sources, input_source_count, pinout.joybus_data);
-                primary_backend->SetGameMode(
-                    //new Melee20Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = false })
-                    new Ultimate(socd::SOCD_2IP)
-                    /*
-                    new ProjectM(
-                        socd::SOCD_2IP_NO_REAC,
-                        { .true_z_press = false, .ledgedash_max_jump_traj = true }
-                    )
-                    */
-                );
+            primary_backend->SetGameMode(
+                new Melee20Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = true })
+                // new Ultimate(socd::SOCD_2IP)
+                /*
+                new ProjectM(
+                    socd::SOCD_2IP_NO_REAC,
+                    { .true_z_press = false, .ledgedash_max_jump_traj = true }
+                )
+                */
+            );
         } else if (console == ConnectedConsole::N64) {
             primary_backend = new N64Backend(input_sources, input_source_count, pinout.joybus_data);
             primary_backend->SetGameMode(new Smash64(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL));
-
         }
 
         // If console then only using 1 backend (no input viewer).
         backend_count = 1;
         backends = new CommunicationBackend *[backend_count] { primary_backend };
     }
-
 }
 
 void loop() {

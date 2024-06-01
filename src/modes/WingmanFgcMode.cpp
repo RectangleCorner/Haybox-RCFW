@@ -11,7 +11,7 @@ WingmanFgcMode::WingmanFgcMode(socd::SocdType horizontal_socd, socd::SocdType ve
   Uncomment line 14 if we use c_up as up and comment out line 13
   */
         socd::SocdPair{ &InputState::down, &InputState::mod_x, vertical_socd  },
- //  socd::SocdPair{ &InputState::down,  &InputState::c_up,  vertical_socd           },
+ //  socd::SocdPair{ &InputState::down,  &InputState::a,  vertical_socd           },
     };
 }
 

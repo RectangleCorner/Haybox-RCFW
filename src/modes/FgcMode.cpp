@@ -11,7 +11,7 @@ FgcMode::FgcMode(socd::SocdType horizontal_socd, socd::SocdType vertical_socd) {
         Uncomment line 14 if we use c_up as up and comment out line 13
   */
         socd::SocdPair{ &InputState::down,  &InputState::mod_x, vertical_socd           },
-        //socd::SocdPair{ &InputState::down,  &InputState::c_up,  vertical_socd           },
+        //socd::SocdPair{ &InputState::down,  &InputState::a,  vertical_socd           },
 
         //If using WASD, uncomment the below line and comment the above lines
         //socd::SocdPair{ &InputState::down,   &InputState::w, vertical_socd     },

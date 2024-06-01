@@ -4,10 +4,7 @@ WingmanFgcMode::WingmanFgcMode(socd::SocdType horizontal_socd, socd::SocdType ve
     _socd_pair_count = 2;
     _socd_pairs = new socd::SocdPair[_socd_pair_count]{
         socd::SocdPair{&InputState::left,  &InputState::right, horizontal_socd},
- /* Mod X override C-Up input if both are pressed. Without this, neutral SOCD doesn't work
-  properly if Down and both Up buttons are pressed, because it first resolves Down + Mod X
-  to set both as unpressed, and then it sees C-Up as pressed but not Down, so you get an up
-  input instead of neutral.
+ /* 
   Uncomment line 14 if we use c_up as up and comment out line 13
   */
         socd::SocdPair{ &InputState::down, &InputState::mod_x, vertical_socd  },

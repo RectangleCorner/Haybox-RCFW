@@ -72,7 +72,7 @@ Go to “netplay” and then click on “open settings folder”.
 
 - Step 3:
   
-Download [“User.zip” from releases](https://github.com/RectangleCorner/Haybox-RCFW/releases/download/release/User.zip), unzip the folder, and drag and drop “User” in the root of netplay.
+Download [“User.zip” from releases](https://github.com/RectangleCorner/Haybox-RCFW/releases/download/release/User.zip), unzip the folder, and drag and drop “User” in the settings folder.
 
 <img src=".github/images/dolphin3.png" alt="Dolphin step 3" />
 

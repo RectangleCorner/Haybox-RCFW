@@ -39,7 +39,7 @@ Major changes from HayBox:
 
 ## Melee
 
-<img src=".github/images/default.png" alt="Melee Layout" />
+<img src=".github/images/Melee toggle.png" alt="Melee Layout" />
 
 Layout for Melee mode
 
@@ -97,7 +97,7 @@ Change the device to “Xinput gamepad” and then load “HayBox_Xinput” for 
 
 
 ## Project M/Project+
-<img src=".github/images/pm.png" alt="PM/P+ Layout" />
+<img src=".github/images/PM toggle.png" alt="PM/P+ Layout" />
 
 Layout for Project M/Project+ mode
 
@@ -109,7 +109,7 @@ The recommended cable for playing Melee netplay is the USB-C to USB-A.
 
 ## Smash Ultimate
 
-<img src=".github/images/ult-layout.png" alt="Ultimate Layout" />
+<img src=".github/images/Ult toggle.png" alt="Ultimate Layout" />
 
 Smash Ultimate Layout
 
@@ -122,7 +122,7 @@ The recommended cable for playing Smash Ultimate is to use the USB-C to GameCube
 
 ## FGC Mode
 
-<img src=".github/images/fgc_layout.png" alt="FGC Layout" />
+<img src=".github/images/FGC toggle.png" alt="FGC Layout" />
 
 FGC layout
 
@@ -140,7 +140,7 @@ To use a Brook Wingman to play fighting games on a console, hold down the button
 
 ## Smash 64
 
-<img src=".github/images/64.png" alt="Smash 64 Layout" />
+<img src=".github/images/S64 toggle.png" alt="Smash 64 Layout" />
 Smash 64 Layout
 
 To switch to Smash 64 when you're in any other mode, hold: 

@@ -136,7 +136,7 @@ The recommended cable for playing fighting games is the USB-C to USB-A cable.
 
 To use a Brook Wingman to play fighting games on a console, hold down the button highlighted below on your controller as you plug in the controller (plug the cord and Wingman into the console before plugging into your controller with the button hold).
 
-<img src=".github/images/wingman_button.png" alt="Wingman" />
+<img src=".github/images/Wingman hold.png" alt="Wingman" />
 
 ## Smash 64
 

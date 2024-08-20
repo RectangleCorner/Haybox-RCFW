@@ -21,7 +21,7 @@ Major changes from HayBox:
     - [Brook Wingman](#brook-wingman)
 - [Smash 64](#smash-64)
     - [Emulator Setup](#emulator-setup)
-- [Customisation](#customisation)
+- [Customization](#Customization)
     - [Updating Your Controller](#Updating-Your-Controller)
     - [Layouts](#layouts)
         - [ATB Peach Layout](#atb-peach-layout)
@@ -152,7 +152,7 @@ To switch to Smash 64 when you're in any other mode, hold:
 The recommended cable for playing Smash 64 on PC is the USB-C to USB-A cable. You will need to manually map the controls on the emulator your first time playing. For more information, follow the guide linked [here](https://smash64.online/gamecube/).
   
 
-## Customisation
+## Customization
 
 ### Updating Your Controller
 

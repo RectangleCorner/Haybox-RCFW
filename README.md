@@ -17,7 +17,7 @@ Major changes from HayBox:
     - [Dolphin/Slippi Setup](#dolphinslippi-setup)
 - [Project M/Project+](#project-mproject)
 - [Smash Ultimate](#smash-ultimate)
-- [FGC](#fgc-mode)
+- [FGC](#fgc)
     - [Brook Wingman](#brook-wingman)
 - [Smash 64](#smash-64)
     - [Emulator Setup](#emulator-setup)

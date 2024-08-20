@@ -120,7 +120,7 @@ For more information on using your controller in Smash Ultimate, please see this
 
 The recommended cable for playing Smash Ultimate is to use the USB-C to GameCube cable to connect your controller to the GameCube Adapter.
 
-## FGC Mode
+## FGC
 
 <img src=".github/images/FGC toggle.png" alt="FGC Layout" />
 
